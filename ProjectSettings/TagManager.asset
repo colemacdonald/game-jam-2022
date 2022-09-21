@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interactible
+  - CinemachineTarget
+  - Plant
+  - Lowerwater
+  - Undefined
   layers:
   - Default
   - TransparentFX
