@@ -678,7 +678,7 @@ MonoBehaviour:
   m_propogationPeriodS: 60
   m_deteriorationPeriodS: 30
   m_deteriorationAmount: 10
-  m_waterLevelImpact: -1
+  m_waterLevelImpact: -2
   m_hydrationAmount: 10
   m_nutrientAbsorbtionAmount: 10
 --- !u!1001 &507183860043119344

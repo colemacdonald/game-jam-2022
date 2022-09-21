@@ -37,6 +37,10 @@ public class Plant : MonoBehaviour
     [SerializeField]
     private int m_waterLevelImpact = 0;
 
+    public int WaterLevelImpact {
+        get => m_waterLevelImpact;
+    }
+
     /*
         Plants impact on plastic waste
     */
