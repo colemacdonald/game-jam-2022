@@ -1314,7 +1314,7 @@ GameObject:
   - component: {fileID: 784048188}
   - component: {fileID: 784048186}
   - component: {fileID: 784048191}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1333,8 +1333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40eaeed317d03ac47b416431383284e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_lowerAmount: 0.15
-  m_lowerTime: 1
 --- !u!23 &784048188
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3218,6 +3216,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2230686286667759934, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: m_layerMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2230686286667759934, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: m_spawnLayerMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2230686286667759934, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: m_cursorLayerMask.m_Bits
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3275809826349320191, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -3277,6 +3291,10 @@ PrefabInstance:
     - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: LockCameraPosition
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5275532201898208547, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6982812146204527121, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_WarningMessage
@@ -4179,7 +4197,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_itemPrefab: {fileID: 9084926515259095104, guid: 55ffc1fbc002f004d91fd66f7837228e, type: 3}
   m_spawnDistance: 1
-  SampleField: 5
 --- !u!1 &2130531162
 GameObject:
   m_ObjectHideFlags: 0

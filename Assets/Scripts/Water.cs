@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
-    [SerializeField]
-    private float m_lowerAmount;
+	private Vector3 m_targetPosition;
 
-    [SerializeField]
-    private float m_lowerTime;
-
-	private bool m_moving = false;
+	private void Start()
+	{
+		m_targetPosition = transform.position;
+	}
 
 	IEnumerator MoveToPosition(Vector2 targetPosition, float duration)
 	{
@@ -25,16 +24,9 @@ public class Water : MonoBehaviour
 		transform.position = targetPosition;
 	}
 
-	private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Lowerwater") && !m_moving)
-		{
-			LowerLevel();
-		}
-    }
-
-    void LowerLevel()
+	public void ChangeLevel(float amount, float time)
 	{
-		StartCoroutine(MoveToPosition(transform.position - (transform.up * m_lowerAmount), m_lowerTime));
+		m_targetPosition = m_targetPosition + (transform.up * amount);
+		var routine = StartCoroutine(MoveToPosition(m_targetPosition, time));
 	}
 }
