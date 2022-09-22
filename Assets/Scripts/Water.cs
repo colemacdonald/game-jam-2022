@@ -14,8 +14,6 @@ public class Water : MonoBehaviour
     [SerializeField]
     private float m_lowerTime;
 
-	private bool m_moving = false;
-
 	// Start is called before the first frame update
     void Start()
     {
@@ -37,7 +35,8 @@ public class Water : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
     {
-		if (!m_moving && other.GetComponent<Plant>() is Plant p) {
+		if (other.GetComponent<Plant>() is Plant p && p.Active) {
+			p.Active = false;
 			AdjustWaterLevel(p.WaterLevelImpact);
 		}
     }

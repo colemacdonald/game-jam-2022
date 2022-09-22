@@ -13,4 +13,6 @@ public class Plant : MonoBehaviour
     public int WaterLevelImpact {
         get => m_waterLevelImpact;
     }
+
+    public bool Active { get; set; } = true;
 }
