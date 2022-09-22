@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5860196921317674240}
   - component: {fileID: 1699664400664377534}
   - component: {fileID: 3149218585853071269}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Stem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5264253554989471289}
   - component: {fileID: 8661022869366384339}
   - component: {fileID: 6539204383811445517}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Quad (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 7651484842780537243}
   - component: {fileID: 5402635820998000021}
   - component: {fileID: 3971165234801091116}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Quad (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7223934168433952210}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cattail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 7234577776475280867}
   - component: {fileID: 6563083688705705650}
   - component: {fileID: 5752927097369728290}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: HotDog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 6693953246907671286}
   - component: {fileID: 5109080806474316653}
   - component: {fileID: 6315798271799895936}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Quad (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 236682536469390428}
   - component: {fileID: 250576578590882858}
   - component: {fileID: 6237590018167711896}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Quad (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -606,8 +606,8 @@ GameObject:
   - component: {fileID: 4329249453946211034}
   - component: {fileID: 6315135094290887585}
   - component: {fileID: 3951250311862885313}
-  - component: {fileID: 7803883501737907725}
-  m_Layer: 2
+  - component: {fileID: 147252335162688965}
+  m_Layer: 0
   m_Name: Cattails
   m_TagString: Lowerwater
   m_Icon: {fileID: 0}
@@ -643,10 +643,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!136 &3951250311862885313
 CapsuleCollider:
@@ -662,7 +662,7 @@ CapsuleCollider:
   m_Height: 2.7697742
   m_Direction: 1
   m_Center: {x: 0, y: 1.2984198, z: -0.13270874}
---- !u!114 &7803883501737907725
+--- !u!114 &147252335162688965
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -671,11 +671,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 9084926515259095104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 103c7ab89714315459d7a1d777f81a5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 34fd0611227d64884aef797f1c9ea2fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_lowerAmount: 0.15
-  m_lowerTime: 1
+  m_plantType: 0
+  m_propogationPeriodS: 60
+  m_deteriorationPeriodS: 30
+  m_deteriorationAmount: 10
+  m_waterLevelImpact: -2
+  m_hydrationAmount: 10
+  m_nutrientAbsorbtionAmount: 10
 --- !u!1001 &507183860043119344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -683,25 +688,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4329249453946211034}
     m_Modifications:
-    - target: {fileID: 350193870039175187, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2334809896969350259, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
       propertyPath: m_Name
       value: Cattail (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2334809896969350259, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2641618791807486338, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4038534189597273932, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
-      propertyPath: m_Layer
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5090678569492871479, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
       propertyPath: m_RootOrder
@@ -759,18 +748,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 15.243
       objectReference: {fileID: 0}
-    - target: {fileID: 6809118397695983628, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8063968048251162253, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8573665413759174875, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
 --- !u!4 &4732254234831913927 stripped
@@ -785,25 +762,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4329249453946211034}
     m_Modifications:
-    - target: {fileID: 350193870039175187, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2334809896969350259, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
       propertyPath: m_Name
       value: Cattail (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2334809896969350259, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2641618791807486338, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4038534189597273932, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
-      propertyPath: m_Layer
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5090678569492871479, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
       propertyPath: m_RootOrder
@@ -860,18 +821,6 @@ PrefabInstance:
     - target: {fileID: 5090678569492871479, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 10.379
-      objectReference: {fileID: 0}
-    - target: {fileID: 6809118397695983628, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8063968048251162253, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8573665413759174875, guid: 075673e5156bd0144b963b18e05f80de, type: 3}
-      propertyPath: m_Layer
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 075673e5156bd0144b963b18e05f80de, type: 3}

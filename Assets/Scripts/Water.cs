@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
-	private Vector3 m_targetPosition;
+	[SerializeField]
+	private int m_waterLevel = 5;
+	private int m_maxWaterLevel;
 
-	private void Start()
-	{
-		m_targetPosition = transform.position;
-	}
+    [SerializeField]
+    private float m_lowerAmount;
+
+    [SerializeField]
+    private float m_lowerTime;
+
+	private bool m_moving = false;
+
+	// Start is called before the first frame update
+    void Start()
+    {
+        m_maxWaterLevel = m_waterLevel;
+    }
 
 	IEnumerator MoveToPosition(Vector2 targetPosition, float duration)
 	{
@@ -24,9 +35,18 @@ public class Water : MonoBehaviour
 		transform.position = targetPosition;
 	}
 
-	public void ChangeLevel(float amount, float time)
-	{
-		m_targetPosition = m_targetPosition + (transform.up * amount);
-		var routine = StartCoroutine(MoveToPosition(m_targetPosition, time));
+	private void OnTriggerEnter(Collider other)
+    {
+		if (!m_moving && other.GetComponent<Plant>() is Plant p) {
+			AdjustWaterLevel(p.WaterLevelImpact);
+		}
+    }
+
+	void AdjustWaterLevel(int levelChange) {
+		int actualWaterLevelChange = System.Math.Max(0, System.Math.Min(m_maxWaterLevel, m_waterLevel + levelChange)) - m_waterLevel;
+
+		m_waterLevel += actualWaterLevelChange;
+
+		StartCoroutine(MoveToPosition(transform.position + (transform.up * m_lowerAmount * actualWaterLevelChange), m_lowerTime * System.Math.Abs(actualWaterLevelChange)));
 	}
 }
