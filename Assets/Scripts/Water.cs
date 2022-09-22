@@ -16,6 +16,8 @@ public class Water : MonoBehaviour
 
 	private bool m_moving = false;
 
+	private float m_lastRainCollision = 0.0f;
+
 	// Start is called before the first frame update
     void Start()
     {
@@ -42,10 +44,19 @@ public class Water : MonoBehaviour
 		}
     }
 
+	private void OnParticleCollision(GameObject other) {
+		if (!m_moving && other.GetComponent<Rain>() is Rain r) {
+			if (Time.time > m_lastRainCollision + r.WaterIncreaseIntervalS) {
+				m_lastRainCollision = Time.time;
+				AdjustWaterLevel(r.WaterIncreaseAmount);
+			}
+		}
+	}
+
 	void AdjustWaterLevel(int levelChange) {
 		int actualWaterLevelChange = System.Math.Max(0, System.Math.Min(m_maxWaterLevel, m_waterLevel + levelChange)) - m_waterLevel;
 
-		Debug.Log("Adjusting level by " + actualWaterLevelChange);
+		Debug.Log("adjusting water level by " + levelChange);
 
 		m_waterLevel += actualWaterLevelChange;
 
