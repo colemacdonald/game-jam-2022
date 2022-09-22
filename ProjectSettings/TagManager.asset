@@ -8,16 +8,17 @@ TagManager:
   - CinemachineTarget
   - Plant
   - Lowerwater
-  - Undefined
+  - Fire
+  - Water
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - WaterSplash
   - Water
   - UI
-  - 
-  - 
+  - Fire
+  - Foliage
   - 
   - 
   - 

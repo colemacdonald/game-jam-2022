@@ -674,13 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fd0611227d64884aef797f1c9ea2fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_plantType: 0
-  m_propogationPeriodS: 60
-  m_deteriorationPeriodS: 30
-  m_deteriorationAmount: 10
-  m_waterLevelImpact: -2
-  m_hydrationAmount: 10
-  m_nutrientAbsorbtionAmount: 10
+  m_waterLevelImpact: -1
 --- !u!1001 &507183860043119344
 PrefabInstance:
   m_ObjectHideFlags: 0
