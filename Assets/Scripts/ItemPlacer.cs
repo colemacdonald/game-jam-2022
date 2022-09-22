@@ -9,6 +9,9 @@ public class ItemPlacer : MonoBehaviour
     private GameObject m_itemPrefab;
 
     [SerializeField]
+    private GameObject m_waterPrefab;
+
+    [SerializeField]
     private float m_spawnDistance;
 
     private CursorController m_cursorController;
@@ -25,10 +28,20 @@ public class ItemPlacer : MonoBehaviour
 		{
             PlaceItem();
 		}
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            PlaceWater();
+        }
     }
 
     void PlaceItem()
 	{
         m_cursorController.InstantiateAtCursor(m_itemPrefab, true);
 	}
+
+    void PlaceWater()
+    {
+        m_cursorController.InstantiateAtCursor(m_waterPrefab, true);
+    }
 }
