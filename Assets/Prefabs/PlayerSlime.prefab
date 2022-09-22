@@ -1393,9 +1393,12 @@ MonoBehaviour:
   m_cursor: {fileID: 2549344518220533970}
   m_cursorDistance: 0.75
   m_cursorProjectionHeightOffset: 0.5
-  m_layerMask:
+  m_cursorLayerMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 17
+  m_spawnLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &4523139366846529165
 GameObject:
   m_ObjectHideFlags: 0
