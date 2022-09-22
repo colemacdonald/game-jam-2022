@@ -25,14 +25,14 @@ public class Water : MonoBehaviour
 	IEnumerator MoveToPosition(Vector2 targetPosition, float duration)
 	{
 		var time = 0.0f;
-		var startPosition = transform.position;
+		var startPosition = transform.localPosition;
 		while (time < duration)
 		{
-			transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+			transform.localPosition = Vector3.Lerp(startPosition, targetPosition, time / duration);
 			time += Time.deltaTime;
 			yield return null;
 		}
-		transform.position = targetPosition;
+		transform.localPosition = targetPosition;
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -45,8 +45,10 @@ public class Water : MonoBehaviour
 	void AdjustWaterLevel(int levelChange) {
 		int actualWaterLevelChange = System.Math.Max(0, System.Math.Min(m_maxWaterLevel, m_waterLevel + levelChange)) - m_waterLevel;
 
+		Debug.Log("Adjusting level by " + actualWaterLevelChange);
+
 		m_waterLevel += actualWaterLevelChange;
 
-		StartCoroutine(MoveToPosition(transform.position + (transform.up * m_lowerAmount * actualWaterLevelChange), m_lowerTime * System.Math.Abs(actualWaterLevelChange)));
+		StartCoroutine(MoveToPosition(transform.localPosition + (transform.up * m_lowerAmount * actualWaterLevelChange), m_lowerTime * System.Math.Abs(actualWaterLevelChange)));
 	}
 }
