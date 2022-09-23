@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Flower
+  m_Name: Nature_CanRevive
   m_Shader: {fileID: 4800000, guid: 30e8776f2a7127940a7d9a2d367d106f, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -165,7 +165,7 @@ Material:
     - _AlphaCutoffPostpass: 0.5
     - _AlphaCutoffPrepass: 0.5
     - _Anisotropy: 0
-    - _Blend: 0
+    - _Blend: 0.162
     - _BlendMode: 0
     - _BumpScale: 1
     - _CoatMask: 0
