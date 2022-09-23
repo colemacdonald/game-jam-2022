@@ -19,6 +19,8 @@ public class Flower : MonoBehaviour
 
 	private string m_waterTag = "Water";
 
+	private bool m_isWatered;
+
 	private void Start()
 	{
 		m_renderer.material.SetFloat("_Blend", 1.0f);
@@ -26,8 +28,9 @@ public class Flower : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag(m_waterTag))
+		if (other.CompareTag(m_waterTag) && !m_isWatered)
 		{
+			m_isWatered = true;
 			m_onWatered?.Invoke();
 			StartCoroutine(Revive());
 		}
