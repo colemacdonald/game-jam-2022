@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 4329249453946211034}
   - component: {fileID: 6315135094290887585}
   - component: {fileID: 3951250311862885313}
-  - component: {fileID: 7803883501737907725}
+  - component: {fileID: 147252335162688965}
   m_Layer: 0
   m_Name: Cattails
   m_TagString: Lowerwater
@@ -662,7 +662,7 @@ CapsuleCollider:
   m_Height: 2.7697742
   m_Direction: 1
   m_Center: {x: 0, y: 1.2984198, z: -0.13270874}
---- !u!114 &7803883501737907725
+--- !u!114 &147252335162688965
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -671,9 +671,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9084926515259095104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 103c7ab89714315459d7a1d777f81a5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 34fd0611227d64884aef797f1c9ea2fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_waterLevelImpact: -1
 --- !u!1001 &507183860043119344
 PrefabInstance:
   m_ObjectHideFlags: 0

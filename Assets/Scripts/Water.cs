@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
+	[SerializeField]
+	private int m_waterLevel = 5;
+	private int m_maxWaterLevel;
+
     [SerializeField]
     private float m_lowerAmount;
 
@@ -12,29 +16,50 @@ public class Water : MonoBehaviour
 
 	private bool m_moving = false;
 
+	private float m_lastRainCollision = 0.0f;
+
+	// Start is called before the first frame update
+    void Start()
+    {
+        m_maxWaterLevel = m_waterLevel;
+    }
+
 	IEnumerator MoveToPosition(Vector2 targetPosition, float duration)
 	{
 		var time = 0.0f;
-		var startPosition = transform.position;
+		var startPosition = transform.localPosition;
 		while (time < duration)
 		{
-			transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+			transform.localPosition = Vector3.Lerp(startPosition, targetPosition, time / duration);
 			time += Time.deltaTime;
 			yield return null;
 		}
-		transform.position = targetPosition;
+		transform.localPosition = targetPosition;
 	}
 
 	private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Lowerwater") && !m_moving)
-		{
-			LowerLevel();
+		if (!m_moving && other.GetComponent<Plant>() is Plant p) {
+			AdjustWaterLevel(p.WaterLevelImpact);
 		}
     }
 
-    void LowerLevel()
-	{
-		StartCoroutine(MoveToPosition(transform.position - (transform.up * m_lowerAmount), m_lowerTime));
+	private void OnParticleCollision(GameObject other) {
+		if (!m_moving && other.GetComponent<Rain>() is Rain r) {
+			if (Time.time > m_lastRainCollision + r.WaterIncreaseIntervalS) {
+				m_lastRainCollision = Time.time;
+				AdjustWaterLevel(r.WaterIncreaseAmount);
+			}
+		}
+	}
+
+	void AdjustWaterLevel(int levelChange) {
+		int actualWaterLevelChange = System.Math.Max(0, System.Math.Min(m_maxWaterLevel, m_waterLevel + levelChange)) - m_waterLevel;
+
+		Debug.Log("adjusting water level by " + levelChange);
+
+		m_waterLevel += actualWaterLevelChange;
+
+		StartCoroutine(MoveToPosition(transform.localPosition + (transform.up * m_lowerAmount * actualWaterLevelChange), m_lowerTime * System.Math.Abs(actualWaterLevelChange)));
 	}
 }
