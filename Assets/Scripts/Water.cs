@@ -37,7 +37,7 @@ public class Water : MonoBehaviour
         m_maxWaterLevel = m_waterLevel;
     }
 
-	IEnumerator MoveToPosition(Vector3 targetPosition, float duration)
+	IEnumerator MoveToPosition(Vector3 targetPosition, float duration, bool isTargetLevel)
 	{
 		m_onWaterLowerBegin?.Invoke();
 		var time = 0.0f;
@@ -50,7 +50,7 @@ public class Water : MonoBehaviour
 		}
 		transform.localPosition = targetPosition;
 		m_onWaterLoweredOneLevel?.Invoke();
-		if (m_waterLevel == m_targetLevel)
+		if (isTargetLevel)
 		{
 			m_onReachedTargetLevel?.Invoke();
 		}
@@ -80,6 +80,6 @@ public class Water : MonoBehaviour
 
 		m_waterLevel += actualWaterLevelChange;
 
-		StartCoroutine(MoveToPosition(transform.localPosition + (transform.up * m_lowerAmount * actualWaterLevelChange), m_lowerTime * System.Math.Abs(actualWaterLevelChange)));
+		StartCoroutine(MoveToPosition(transform.localPosition + (transform.up * m_lowerAmount * actualWaterLevelChange), m_lowerTime * System.Math.Abs(actualWaterLevelChange), m_waterLevel == m_targetLevel));
 	}
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Fire : MonoBehaviour
 {
@@ -19,7 +20,13 @@ public class Fire : MonoBehaviour
 	[SerializeField]
 	private float m_destroyDelay;
 
-	private bool m_active;
+	[SerializeField]
+	private UnityEvent m_onBeginExtinguish;
+
+	[SerializeField]
+	private UnityEvent m_onExtinguished;
+
+	private bool m_active = true;
 
 	private string m_waterTag = "Water";
 
@@ -30,7 +37,7 @@ public class Fire : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag(m_waterTag))
+		if (other.CompareTag(m_waterTag) && m_active)
 		{
 			StartCoroutine(ExtinguishSelf());
 		}
@@ -51,9 +58,12 @@ public class Fire : MonoBehaviour
 
 	private IEnumerator ExtinguishSelf()
 	{
+		m_active = false;
 		yield return new WaitForSeconds(m_extinguishDelay);
+		m_onBeginExtinguish?.Invoke();
 		m_particleSystem.Stop();
 		yield return StartCoroutine(FadeLight());
+		m_onExtinguished?.Invoke();
 		yield return new WaitForSeconds(m_destroyDelay);
 		Destroy(gameObject);
 	}
