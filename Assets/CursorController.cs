@@ -30,16 +30,22 @@ public class CursorController : MonoBehaviour
 
     public void InstantiateAtCursor(GameObject prefab, bool randomizeRotation)
     {
-        var rotation = randomizeRotation ? Quaternion.Euler(0, Random.value * 360.0f, 0) : transform.rotation;
+        var baseRotation = randomizeRotation ? Quaternion.Euler(0, Random.value * 360.0f, 0) : Quaternion.identity;
         if ((m_hitObjectLayer & m_spawnLayerMask.value) != 0)
         {
-            Instantiate(prefab, m_cursor.position, rotation * m_cursor.rotation);
+            Instantiate(prefab, m_cursor.position, baseRotation * m_cursor.rotation);
         }
         else if (Physics.Raycast(SpawnPos, -Vector3.up, out var hitInfo, Mathf.Infinity, m_spawnLayerMask.value))
         {
-            Instantiate(prefab, hitInfo.point, rotation * Quaternion.FromToRotation(Vector3.up, hitInfo.normal));
+            Instantiate(prefab, hitInfo.point, baseRotation * GetForwardRotation(hitInfo.normal));
         }
     }
+
+    private Quaternion GetForwardRotation(Vector3 up)
+	{
+        var forward = Vector3.Cross(transform.right, up).normalized;
+        return Quaternion.LookRotation(forward, up);
+	}
 
     private void Update()
 	{
