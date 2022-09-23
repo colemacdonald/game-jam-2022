@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6036414320818359178}
   - component: {fileID: 6036414320818359181}
   m_Layer: 0
-  m_Name: ScoreText
+  m_Name: ScoreAddText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_fadeDelay: 3
-  m_fadeDuration: 1
+  m_fadeDuration: 0.5
   m_destroyOnFade: 1
   m_text: {fileID: 6036414320818359182}
 --- !u!114 &6036414320818359181
