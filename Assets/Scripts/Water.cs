@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Water : MonoBehaviour
 {
@@ -8,11 +9,23 @@ public class Water : MonoBehaviour
 	private int m_waterLevel = 5;
 	private int m_maxWaterLevel;
 
-    [SerializeField]
+	[SerializeField]
+	private int m_targetLevel;
+
+	[SerializeField]
     private float m_lowerAmount;
 
     [SerializeField]
     private float m_lowerTime;
+
+	[SerializeField]
+	private UnityEvent m_onWaterLowerBegin;
+
+	[SerializeField]
+	private UnityEvent m_onWaterLoweredOneLevel;
+
+	[SerializeField]
+	private UnityEvent m_onReachedTargetLevel;
 
 	private bool m_moving = false;
 
@@ -24,8 +37,9 @@ public class Water : MonoBehaviour
         m_maxWaterLevel = m_waterLevel;
     }
 
-	IEnumerator MoveToPosition(Vector2 targetPosition, float duration)
+	IEnumerator MoveToPosition(Vector3 targetPosition, float duration, bool isTargetLevel)
 	{
+		m_onWaterLowerBegin?.Invoke();
 		var time = 0.0f;
 		var startPosition = transform.localPosition;
 		while (time < duration)
@@ -35,6 +49,12 @@ public class Water : MonoBehaviour
 			yield return null;
 		}
 		transform.localPosition = targetPosition;
+		m_onWaterLoweredOneLevel?.Invoke();
+		if (isTargetLevel)
+		{
+			m_onReachedTargetLevel?.Invoke();
+		}
+
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -60,6 +80,6 @@ public class Water : MonoBehaviour
 
 		m_waterLevel += actualWaterLevelChange;
 
-		StartCoroutine(MoveToPosition(transform.localPosition + (transform.up * m_lowerAmount * actualWaterLevelChange), m_lowerTime * System.Math.Abs(actualWaterLevelChange)));
+		StartCoroutine(MoveToPosition(transform.localPosition + (transform.up * m_lowerAmount * actualWaterLevelChange), m_lowerTime * System.Math.Abs(actualWaterLevelChange), m_waterLevel == m_targetLevel));
 	}
 }

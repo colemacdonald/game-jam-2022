@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 103646686950491485}
   - component: {fileID: 1149028381840726305}
   - component: {fileID: 4059208815715459283}
+  - component: {fileID: 116304497647821974}
   m_Layer: 6
   m_Name: Fire
   m_TagString: Fire
@@ -4936,3 +4937,33 @@ MonoBehaviour:
   m_extinguishDelay: 0.2
   m_lightFadeTime: 2
   m_destroyDelay: 1
+  m_onBeginExtinguish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 116304497647821974}
+        m_TargetAssemblyTypeName: ScoreAffector, Assembly-CSharp
+        m_MethodName: AddToScore
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_onExtinguished:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &116304497647821974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8678164126651003905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7647fa51ee5995f4fa76b07db045e746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

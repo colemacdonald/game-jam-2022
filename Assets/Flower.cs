@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Flower : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class Flower : MonoBehaviour
 
 	[SerializeField]
 	private float m_reviveTime;
+
+	[SerializeField]
+	private UnityEvent m_onWatered;
+
+	[SerializeField]
+	private UnityEvent m_onRevived;
 
 	private string m_waterTag = "Water";
 
@@ -21,6 +28,7 @@ public class Flower : MonoBehaviour
 	{
 		if (other.CompareTag(m_waterTag))
 		{
+			m_onWatered?.Invoke();
 			StartCoroutine(Revive());
 		}
 	}
@@ -37,5 +45,6 @@ public class Flower : MonoBehaviour
 			yield return null;
 		}
 		m_renderer.material.SetFloat("_Blend", 0.0f);
+		m_onRevived?.Invoke();
 	}
 }
